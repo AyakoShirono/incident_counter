@@ -9,11 +9,16 @@
 .Main
   .div.jumbotron.bg-secondary
   .container
-  %button.btn.btn-outline-dark
-    btn
-  %button.btn.btn-outline-dark
-    btn
-  %button.btn.btn-outline-dark
-    btn
-  %button.btn.btn-outline-dark
-    btn
+    .row
+      .col.bg-dark.col-3
+      .col
+        = button_to "インシデント項目1", incidents_path, class: "btn btn-outline-dark"
+        = Incident.group(:type).count(:type[])
+        = button_to "インシデント項目2", incidents_path, class: "btn btn-outline-dark"
+        = button_to "インシデント項目3", incidents_path, class: "btn btn-outline-dark"
+        = button_to "インシデント項目4", incidents_path, class: "btn btn-outline-dark"
+        -# %button.btn.btn-outline-dark
+        -#   btn
+        = Incident.all.count
+
+        
