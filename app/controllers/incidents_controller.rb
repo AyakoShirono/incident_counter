@@ -3,9 +3,19 @@ class IncidentsController < ApplicationController
     @incidents = Incident.all
   end
 
+  def new
+    @incident = Incident.new
+  end
+
   def create
-    Incident.create(incidents_count: 1)
+    @incident = Incident.create(incident_params)
     redirect_to root_path
+  end
+
+  private
+  def incident_params
+    params.permit(:type, :incidents_count)
+    
   end
 
 end

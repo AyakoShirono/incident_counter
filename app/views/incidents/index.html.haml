@@ -4,21 +4,32 @@
       %a.nab-link
         incident counter
       %a.nab-link
-        home
+        -# home
       %a.nab-link
 .Main
   .div.jumbotron.bg-secondary
-  .container
+  .container.no-gutters
     .row
-      .col.bg-dark.col-3
+      .col.bg-dark.col-3.text-light
+        - @incidents.each do |post|
+          =post.created_at
+
       .col
-        = button_to "インシデント項目1", incidents_path, class: "btn btn-outline-dark"
-        = Incident.group(:type).count(:type[])
-        = button_to "インシデント項目2", incidents_path, class: "btn btn-outline-dark"
-        = button_to "インシデント項目3", incidents_path, class: "btn btn-outline-dark"
-        = button_to "インシデント項目4", incidents_path, class: "btn btn-outline-dark"
-        -# %button.btn.btn-outline-dark
-        -#   btn
+        
+        = check_box :incident, :confirmed, {class:'check_box'}, true, false
+        = button_to "インシデント項目1", incidents_path(type:1), class: "btn btn-outline-dark"
+        = Incident.group(:type).count(:type)
+        = button_to "インシデント項目2", incidents_path(type:2), class: "btn btn-outline-dark"
+        = button_to "インシデント項目3", incidents_path(type:3), class: "btn btn-outline-dark"
+        = button_to "インシデント項目4", incidents_path(type:4), class: "btn btn-outline-dark"
+        %button.btn.btn-outline-dark
+          btn
+        
         = Incident.all.count
+        = form_with model: @incident do |f|
+          = f.check_box :confirmed, {class:'check_box'}, true, false
+          %button.btn.btn-outline-dark
+            インシデント項目
+        
 
         
