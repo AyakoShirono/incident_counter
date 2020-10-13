@@ -7,7 +7,15 @@
         -# home
       %a.nab-link
 .Main
-  .div.jumbotron.bg-secondary
+  .div.jumbotron.bg-secondary.text-light
+    %h2
+    シンプルなカウンター
+    %p
+    1件の重大事故があれば、その背後に29件の軽度の事故があり、300件のインシデントが潜んでいる。
+    %p
+    これは経験則、ハインリッヒの法則として知られています。起こっているインシデント,
+    改善可能な項目を把握して重大事故のリスクを減らしましょう。
+
   .container.no-gutters
     .row
       .col.bg-dark.col-3.text-light
@@ -15,16 +23,15 @@
           =post.created_at
 
       .col
-        
+        %p 確認作業を行なっていたらチェック
         = check_box :incident, :confirmed, {class:'check_box'}, true, false
-        = button_to "インシデント項目1", incidents_path(type:1), class: "btn btn-outline-dark"
+        = button_to "マニュアル(Software)", incidents_path(type:1), class: "btn btn-outline-dark"
+        = button_to "道具・機器(Hardware)", incidents_path(type:2), class: "btn btn-outline-dark"
+        = button_to "環境(Environment)", incidents_path(type:3), class: "btn btn-outline-dark"
+        = button_to "個人的要素(Liveware)", incidents_path(type:4), class: "btn btn-outline-dark"
+        -# %button.btn.btn-outline-dark
+        -#   btn
         = Incident.group(:type).count(:type)
-        = button_to "インシデント項目2", incidents_path(type:2), class: "btn btn-outline-dark"
-        = button_to "インシデント項目3", incidents_path(type:3), class: "btn btn-outline-dark"
-        = button_to "インシデント項目4", incidents_path(type:4), class: "btn btn-outline-dark"
-        %button.btn.btn-outline-dark
-          btn
-        
         = Incident.all.count
         = form_with model: @incident do |f|
           = f.check_box :confirmed, {class:'check_box'}, true, false
@@ -32,4 +39,6 @@
             インシデント項目
         
 
-        
+        = form_with url: incidents_path do |f|
+          = check_box :incident, :confirmed, {class:'check_box'}, true, false
+          = button_to "インシデント項目4", incidents_path(type:4), class: "btn btn-outline-dark"
