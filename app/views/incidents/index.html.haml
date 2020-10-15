@@ -22,8 +22,8 @@
           =post.created_at
 
       .col
-        %p 確認作業を行なっていたらチェック
-        = check_box :incident, :confirmed, {class:'check_box'}, true, false
+        -# %p 確認作業を行なっていたらチェック
+        -# = check_box :incident, :confirmed, {class:'check_box'}, true, false
         = button_to "マニュアル(Software)", incidents_path(type:1), class: "btn btn-outline-dark"
         = button_to "道具・機器(Hardware)", incidents_path(type:2), class: "btn btn-outline-dark"
         = button_to "環境(Environment)", incidents_path(type:3), class: "btn btn-outline-dark"
@@ -32,12 +32,12 @@
         -#   btn
         = Incident.group(:type).count(:type)
         = Incident.all.count
-        = form_with model: @incident do |f|
-          = f.check_box :confirmed, {class:'check_box'}, true, false
-          %button.btn.btn-outline-dark
-            インシデント項目
+        -# = form_with model: @incident do |f|
+        -#   = f.check_box :confirmed, {class:'check_box'}, true, false
+        -#   %button.btn.btn-outline-dark
+        -#     インシデント項目
         
 
-        = form_with url: incidents_path do |f|
-          = check_box :incident, :confirmed, {class:'check_box'}, true, false
-          = button_to "インシデント項目4", incidents_path(type:4), class: "btn btn-outline-dark"
+        -# = form_with url: incidents_path do |f|
+        -#   = check_box :incident, :confirmed, {class:'check_box'}, true, false
+        -#   = button_to "インシデント項目4", incidents_path(type:4), class: "btn btn-outline-dark"

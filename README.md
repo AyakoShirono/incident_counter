@@ -1,24 +1,36 @@
-# README
+# Name
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+incident counter
+日常業務で発生したインシデントの件数を項目ごとにカウント、記録する。
 
-Things you may want to cover:
+# DEMO
 
-* Ruby version
+https://i.gyazo.com/c099edaf905b98d2fdfbf6201b12a3b1.gif
 
-* System dependencies
 
-* Configuration
+# Features
 
-* Database creation
+重大な事故に至る可能性のある事象（インシデント）をカウントし、インシデントの件数や種類を把握することで改善に役立てリスク減少を目指す。
+カウント項目には、SHELモデルに基づく4要素（ソフトウェア、ハードウェア、環境、個人要素）を設定した。フォームでの送信でなく、ボタンをクリックするだけで記録が済むので忙しい業務中に負担なく記録することができる。
+ミスやヒューマンエラーでの原因追及は責任の所在を明らかにするより、改善点を見つけることを目的とする。
 
-* Database initialization
+# Requirement
 
-* How to run the test suite
+* ruby　'2.6.5'
+* 'rails', '~> 6.0.0'
+* 'mysql2', '>= 0.5.3'
+* 'webpacker', '~> 4.0'
 
-* Services (job queues, cache servers, search engines, etc.)
+# Usage
 
-* Deployment instructions
+インシデントが対応する項目を以下から選び、ボタンをクリックする。
 
-* ...
+マニュアル(Software) 作業マニュアル、ルール
+道具・機器(Hardware)
+環境 (Environment) 気温，照度等
+個人的要素 (Liveware) 性格,体調等
+
+# Author
+
+* 作成者 城野綾子
+* E-mail　imnhe.yg@gmail.com
